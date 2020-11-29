@@ -1,0 +1,51 @@
+{% extends "main.html" %}
+
+{% set title = 'Neapykantos/įžeidžios kalbos atpažintuvas' %}
+
+{% block og %}
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neapykantos/įžeidžios kalbos atpažintuvas">
+<meta property="og:url" content="http://hatespeech.vdu.lt">
+<meta property="og:image" content="http://hatespeech.vdu.lt/img/hate.png">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="jumbotron jumbotron-color">
+            <p class="lead lead-jumbo">Neapykantos/įžeidžios kalbos socialinių medijų tekstuose atpažintuvas</p>
+            <p>Komponento parengimui buvo panaudoti per 200 tūkst. atviros prieigos lietuviškų socialinių medijų
+                komentarai, kurie suskirtyti į įžeidžius ir neutralius.
+            </p>
+            <p> Įrankio technologinį sprendimą ir svetainę kūrė Mindaugas Petkevičius. Įrankio kalbinį sprendimą kūrė Jūratė Ruzaitė</p>
+        </div>
+    </div>
+</div>
+<div class="container p-4 forms-body">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col-md-12 mt-3 mb-3">
+            <div class="form-group">
+                <label for="text">Komentaras</label>
+                <textarea rows="5" required="required" name="text" class="form-control" id="text"
+                          placeholder=""></textarea>
+            </div>
+            <button type="button" id="button" onclick="analyze()" class="btn btn-primary">Analizuoti</button>
+        </div>
+        <div class="col-md-12" id="success">
+            <div class="alert alert-primary" role="alert" hidden></div>
+        </div>
+        <div class="col-md-12" id="failed">
+            <div class="alert alert-danger" role="alert" hidden></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

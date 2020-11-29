@@ -1,0 +1,2 @@
+__label_offensive__ xui
+__label_neutral__ nieko

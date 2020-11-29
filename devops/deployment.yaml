@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hatespeech
+  namespace: vdu
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: hatespeech
+  template:
+    metadata:
+      labels:
+        app: hatespeech
+    spec:
+      containers:
+      - name: hatespeech
+        image: semantikadocker.vdu.lt/hatespeech:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          name: http
+      nodeSelector:
+        nodetype: apps
+      imagePullSecrets:
+        - name: vdu

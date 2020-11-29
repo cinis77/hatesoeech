@@ -1,0 +1,13 @@
+[Unit]
+Description=hatespeech
+
+[Service]
+User=hspeech
+Type=simple
+ExecStart=/srv/hspeech/venv/bin/python /srv/hspeech/app.py
+WorkingDirectory=/srv/hspeech/
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=sysinit.target

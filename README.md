@@ -1,1 +1,1 @@
-# hatesoeech
+HATESPEECH
